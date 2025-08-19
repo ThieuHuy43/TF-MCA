@@ -61,36 +61,6 @@ pip install -r requirements.txt
 - PyTorch 1.12+
 - CLIP
 
-# Project Structure
-
-```
-TF-MCA/
-├── configs/                    # Configuration files
-│   ├── datasets/              # Dataset configurations
-│   └── models/                # Model configurations
-├── datasets/                   # Dataset handling
-│   ├── tfs_fruit.py           # TFS-Fruit dataset loader
-│   ├── cifar100.py            # CIFAR100 dataset
-│   └── miniimagenet.py        # MiniImageNet dataset
-├── engine/                     # Core training/evaluation engines
-│   ├── trainer.py             # Training pipeline
-│   └── evaluator.py           # Evaluation metrics
-├── models/                     # Model implementations
-│   ├── tf_mca.py              # Main TF-MCA framework
-│   ├── calibration.py         # Calibration modules
-│   └── fusion.py              # Cross-modal fusion
-├── utils/                      # Utility functions
-│   ├── metrics.py             # Evaluation metrics
-│   ├── visualization.py       # Result visualization
-│   └── text_generation.py     # LLM-based text generation
-├── scripts/                    # Experiment scripts
-│   ├── run_tfs_fruit.sh       # TFS-Fruit experiments
-│   ├── run_cifar100.sh        # CIFAR100 experiments
-│   └── run_miniimagenet.sh    # MiniImageNet experiments
-├── main.py                     # Main execution script
-└── requirements.txt            # Dependencies
-```
-
 ## Quick Start
 
 ### 1. Dataset Preparation
@@ -100,7 +70,7 @@ TF-MCA/
 **Standard Benchmarks**: 
 ```bash
 # CIFAR100 will be downloaded automatically
-# MiniImageNet: Download and extract to datasets/MiniImageNet/
+# MiniImageNet: Download and extract to datasets/miniimageNet/
 ```
 
 ### 2. Basic Usage
@@ -131,8 +101,8 @@ Modify configuration files in `configs/` to adjust:
 python main.py --config configs/tfs_fruit_config.yaml --backbone ViT-L/14
 
 # Test with different shot numbers
+python main.py --config configs/tfs_fruit_config.yaml --shots 5
 python main.py --config configs/tfs_fruit_config.yaml --shots 10
-python main.py --config configs/tfs_fruit_config.yaml --shots 20
 ```
 
 ## Evaluation
