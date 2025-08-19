@@ -14,7 +14,7 @@ TF-MCA (Training-Free Modality Calibration and Alignment) is a completely traini
 
 - **Modality Misalignment**: Bridging the gap between visual and textual representations
 - **Distribution Shifts**: Handling changes across incremental learning sessions  
-- **Inter-class Ambiguity**: Distinguishing between visually similar classes (e.g., genuine vs. counterfeit fruits)
+- **Inter-class Ambiguity**: Distinguishing between visually similar classes (genuine vs. counterfeit fruits)
 
 ## Architecture
 
@@ -111,10 +111,10 @@ TF-MCA/
 python main.py --config configs/tfs_fruit_config.yaml
 
 # Run on CIFAR100
-python main.py --config configs/cifar100_config.yaml
+python main.py --config configs/cifar100.yaml
 
 # Run on MiniImageNet  
-python main.py --config configs/miniimagenet_config.yaml
+python main.py --config configs/miniimagenet.yaml
 ```
 
 ### 3. Custom Configuration
