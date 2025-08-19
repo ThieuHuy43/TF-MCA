@@ -44,7 +44,7 @@ TF-MCA operates through a two-level calibration mechanism:
 | MiniImageNet | **93.43%** | **3.43%** | **+3.18%** |
 | CIFAR100 | **76.98%** | **8.91%** | **+2.07%** |
 
-## 🛠️ Installation
+## Installation
 
 ### Requirements
 
@@ -158,11 +158,11 @@ The dataset is designed to simulate realistic agricultural inspection scenarios 
 
 ## Key Features
 
-- ✅ **Training-Free**: No gradient updates or fine-tuning required
-- ✅ **Domain Agnostic**: Works across different domains (agriculture, general objects)
-- ✅ **Scalable**: Performance improves with stronger backbones and more shots
-- ✅ **Efficient**: Low computational overhead at inference time
-- ✅ **Robust**: Consistent performance across incremental sessions
+- **Training-Free**: No gradient updates or fine-tuning required
+- **Domain Agnostic**: Works across different domains (agriculture, general objects)
+- **Scalable**: Performance improves with stronger backbones and more shots
+- **Efficient**: Low computational overhead at inference time
+- **Robust**: Consistent performance across incremental sessions
 
 ## 📝 Citation
 
