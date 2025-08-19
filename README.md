@@ -2,7 +2,6 @@
 
 ![Python](https://img.shields.io/badge/python-3.8+-blue.svg)
 ![PyTorch](https://img.shields.io/badge/PyTorch-1.12+-red.svg)
-![License](https://img.shields.io/badge/license-MIT-green.svg)
 
 ***A novel bi-level modality calibration-based framework for few-shot counterfeit fruit detection***
 
@@ -164,11 +163,7 @@ The dataset is designed to simulate realistic agricultural inspection scenarios 
 - **Efficient**: Low computational overhead at inference time
 - **Robust**: Consistent performance across incremental sessions
 
-## 📝 Citation
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+## Citation
 
 ## Authors
 
