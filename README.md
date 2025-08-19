@@ -4,11 +4,11 @@
 ![PyTorch](https://img.shields.io/badge/PyTorch-1.12+-red.svg)
 ![License](https://img.shields.io/badge/license-MIT-green.svg)
 
-**A novel bi-level modality calibration-based framework for few-shot counterfeit fruit detection**
+***A novel bi-level modality calibration-based framework for few-shot counterfeit fruit detection***
 
 This repository contains the official implementation of our paper: *"A novel bi-level modality calibration-based framework for few-shot counterfeit fruit detection"* by Dat Tran-Anh and Thieu Huy Nguyen from Thuyloi University.
 
-## 🚀 Overview
+## Overview
 
 TF-MCA (Training-Free Modality Calibration and Alignment) is a completely training-free framework designed to enhance Few-Shot Class-Incremental Learning (FSCIL) performance in fine-grained domains, particularly for counterfeit agricultural product detection. The framework addresses three critical challenges:
 
@@ -16,7 +16,7 @@ TF-MCA (Training-Free Modality Calibration and Alignment) is a completely traini
 - **Distribution Shifts**: Handling changes across incremental learning sessions  
 - **Inter-class Ambiguity**: Distinguishing between visually similar classes (e.g., genuine vs. counterfeit fruits)
 
-## 🏗️ Architecture
+## Architecture
 
 TF-MCA operates through a two-level calibration mechanism:
 
@@ -30,7 +30,7 @@ TF-MCA operates through a two-level calibration mechanism:
 
 ![TF-MCA Architecture](assets/tf-mca-architecture.png)
 
-## 📊 Key Results
+## Results
 
 ### TFS-Fruit Dataset (Counterfeit Detection)
 - **Average Accuracy**: 94.12%
@@ -61,10 +61,8 @@ pip install -r requirements.txt
 - Python 3.8+
 - PyTorch 1.12+
 - CLIP
-- OpenAI API (for LLM-based text generation)
-- NumPy, scikit-learn, matplotlib
 
-## 📁 Project Structure
+# Project Structure
 
 ```
 TF-MCA/
@@ -94,7 +92,7 @@ TF-MCA/
 └── requirements.txt            # Dependencies
 ```
 
-## 🚀 Quick Start
+## Quick Start
 
 ### 1. Dataset Preparation
 
@@ -127,19 +125,6 @@ Modify configuration files in `configs/` to adjust:
 - LLM parameters for text generation
 - Fusion weights and calibration parameters
 
-## 🔧 Advanced Usage
-
-### Ablation Studies
-
-```bash
-# Run ablation study on TFS-Fruit
-python ablation_study.py --dataset tfs_fruit --components all
-
-# Test individual components
-python ablation_study.py --dataset tfs_fruit --disable_tsc  # Without Textual Self-Calibration
-python ablation_study.py --dataset tfs_fruit --disable_vfc  # Without Visual Feature Calibration
-```
-
 ### Scalability Analysis
 
 ```bash
@@ -151,7 +136,7 @@ python main.py --config configs/tfs_fruit_config.yaml --shots 10
 python main.py --config configs/tfs_fruit_config.yaml --shots 20
 ```
 
-## 📈 Evaluation
+## Evaluation
 
 The framework supports comprehensive evaluation metrics:
 
@@ -160,22 +145,7 @@ The framework supports comprehensive evaluation metrics:
 - **Accuracy Drop**: Measures catastrophic forgetting
 - **Macro-F1**: For imbalanced datasets like TFS-Fruit
 
-## 🔬 Experimental Reproduction
-
-To reproduce the results from our paper:
-
-```bash
-# Reproduce main results (Table 2)
-bash scripts/reproduce_main_results.sh
-
-# Reproduce ablation study (Table 3)
-bash scripts/reproduce_ablation.sh
-
-# Reproduce scalability analysis (Table 5)
-bash scripts/reproduce_scalability.sh
-```
-
-## 📊 TFS-Fruit Dataset
+## TFS-Fruit Dataset
 
 We introduce **TFS-Fruit**, a specialized dataset for counterfeit fruit detection:
 
@@ -186,7 +156,7 @@ We introduce **TFS-Fruit**, a specialized dataset for counterfeit fruit detectio
 
 The dataset is designed to simulate realistic agricultural inspection scenarios where counterfeit products are crafted to closely resemble genuine items.
 
-## 🎯 Key Features
+## Key Features
 
 - ✅ **Training-Free**: No gradient updates or fine-tuning required
 - ✅ **Domain Agnostic**: Works across different domains (agriculture, general objects)
@@ -196,42 +166,20 @@ The dataset is designed to simulate realistic agricultural inspection scenarios 
 
 ## 📝 Citation
 
-If you find this work useful for your research, please cite our paper:
-
-```bibtex
-@article{trananh2024tfmca,
-  title={A novel bi-level modality calibration-based framework for few-shot counterfeit fruit detection},
-  author={Tran-Anh, Dat and Nguyen, Thieu Huy},
-  journal={[Journal Name]},
-  year={2024},
-  organization={Thuyloi University}
-}
-```
-
-## 🤝 Contributing
-
-We welcome contributions! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
-
 ## 📄 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 👥 Authors
+## Authors
 
 - **Dat Tran-Anh** - Faculty of Information Technology, Thuyloi University
   - Email: dat.trananh@tlu.edu.vn
 - **Thieu Huy Nguyen** - Faculty of Information Technology, Thuyloi University  
   - Email: 2251262610@e.tlu.edu.vn
 
-## 🙏 Acknowledgments
+## Acknowledgments
 
 We thank the Faculty of Information Technology at Thuyloi University for supporting this research. We also acknowledge the agricultural experts who helped verify the annotations in the TFS-Fruit dataset.
-
-## 📞 Contact
-
-For questions about the code or paper, please open an issue or contact:
-- Dat Tran-Anh: dat.trananh@tlu.edu.vn
-- Thieu Huy Nguyen: 2251262610@e.tlu.edu.vn
 
 ---
 
