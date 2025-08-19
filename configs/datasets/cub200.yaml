@@ -1,0 +1,12 @@
+DATASET:
+  NAME: "CUB200"
+  ROOT: "datasets/"
+  GPT_PATH: "description/modified_cub200_output.json"
+  NUM_CLASSES: 200
+  NUM_INIT_CLS: 100
+  NUM_INC_CLS: 10
+  NUM_BASE_SHOT: -1 # -1 means using all samples
+  NUM_INC_SHOT: 5
+
+  BETA: 0.3
+  ENSEMBLE_ALPHA: 0.8

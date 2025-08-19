@@ -1,0 +1,35 @@
+SEED: 1
+
+DEVICE:
+  DEVICE_NAME: "cuda"
+  GPU_ID: "0;"
+
+DATALOADER:
+  TRAIN:
+    BATCH_SIZE_BASE: 32
+    BATCH_SIZE_INC: 16
+  TEST:
+    BATCH_SIZE: 32
+  NUM_WORKERS: 4
+
+
+MODEL:
+  BACKBONE:
+    NAME: "ViT-B/16"  #  RN50  RN101  ViT-B/32  ViT-B/16  ViT-L/14
+  
+
+TRAINER:
+  BiMC:
+    PREC: "fp16"  # fp16, fp32, amp
+
+    VISION_CALIBRATION: True
+    LAMBDA_I: 0.1 
+    TAU: 16        
+
+    TEXT_CALIBRATION: True
+    LAMBDA_T: 0.5
+
+    GAMMA_BASE: 1.0
+    GAMMA_INC: 5.0
+
+    USING_ENSEMBLE: True

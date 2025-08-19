@@ -1,0 +1,25 @@
+SEED: 42
+DATASET:
+  NAME: fruits
+  ROOT: C:\tf_fruit
+  GPT_PATH: description/fruits_prompts_full.json
+  NUM_CLASSES: 50
+  NUM_INIT_CLS: 30
+  NUM_INC_CLS: 2
+  NUM_BASE_SHOT: 5
+  NUM_INC_SHOT: 5
+
+  BETA: 0.65
+  ENSEMBLE_ALPHA: 0.5
+
+DATALOADER:
+  TRAIN:
+    BATCH_SIZE_BASE: 32
+    BATCH_SIZE_INC: 16
+  TEST:
+    BATCH_SIZE: 16
+  NUM_WORKERS: 4
+
+DEVICE:
+  DEVICE_NAME: "cuda"
+  GPU_ID: "0;"

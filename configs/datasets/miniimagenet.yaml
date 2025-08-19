@@ -1,0 +1,12 @@
+DATASET:
+  NAME: "MiniImagenet"
+  ROOT: "datasets/"
+  GPT_PATH: "description/modified_miniimagent_output_final.json"
+  NUM_CLASSES: 100
+  NUM_INIT_CLS: 60
+  NUM_INC_CLS: 5
+  NUM_BASE_SHOT: 600
+  NUM_INC_SHOT: 5
+
+  BETA: 0.65
+  ENSEMBLE_ALPHA: 0.6
