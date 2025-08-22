@@ -22,10 +22,10 @@ def load_clip_to_cpu(cfg):
     return model
 
 
-class BiMC(nn.Module):
+class TF_MCA(nn.Module):
 
     def __init__(self, cfg, template, device):
-        super(BiMC, self).__init__()
+        super(TF_MCA, self).__init__()
         self.cfg = cfg
         self.device = device
         print(f"Loading CLIP (backbone: {cfg.MODEL.BACKBONE.NAME})")
@@ -33,7 +33,7 @@ class BiMC(nn.Module):
         self.template = template
         clip_model = load_clip_to_cpu(cfg)
 
-        if cfg.TRAINER.BiMC.PREC == "fp32" or cfg.TRAINER.BiMC.PREC == "amp":
+        if cfg.TRAINER.TF_MCA.PREC == "fp32" or cfg.TRAINER.TF_MCA.PREC == "amp":
         # CLIP's default precision is fp16
             clip_model.float()
 
@@ -131,8 +131,8 @@ class BiMC(nn.Module):
 
 
     def soft_calibration(self, base_protos, cur_protos):
-        shift_weight = self.cfg.TRAINER.BiMC.LAMBDA_I
-        tau = self.cfg.TRAINER.BiMC.TAU
+        shift_weight = self.cfg.TRAINER.TF_MCA.LAMBDA_I
+        tau = self.cfg.TRAINER.TF_MCA.TAU
         base_protos = F.normalize(base_protos, p=2, dim=-1)
         cur_protos = F.normalize(cur_protos, p=2, dim=-1)
         weights = torch.mm(cur_protos, base_protos.T) * tau
@@ -183,9 +183,9 @@ class BiMC(nn.Module):
         cov_images = torch.cov(images_features.T)
 
         if cls_begin_index == 0:
-            cov_images = shrink_cov(cov_images, alpha1=self.cfg.TRAINER.BiMC.GAMMA_BASE) 
+            cov_images = shrink_cov(cov_images, alpha1=self.cfg.TRAINER.TF_MCA.GAMMA_BASE) 
         else:
-            cov_images = shrink_cov(cov_images, alpha1=self.cfg.TRAINER.BiMC.GAMMA_INC)
+            cov_images = shrink_cov(cov_images, alpha1=self.cfg.TRAINER.TF_MCA.GAMMA_INC)
 
         
         print('finish loading covariance')
@@ -266,8 +266,8 @@ class BiMC(nn.Module):
         img_feat = self.extract_img_feature(images)
         img_feat = F.normalize(img_feat, dim=-1)
 
-        if self.cfg.TRAINER.BiMC.TEXT_CALIBRATION:
-            lambda_t = self.cfg.TRAINER.BiMC.LAMBDA_T
+        if self.cfg.TRAINER.TF_MCA.TEXT_CALIBRATION:
+            lambda_t = self.cfg.TRAINER.TF_MCA.LAMBDA_T
         else:
             lambda_t = 0.0
 
@@ -284,7 +284,7 @@ class BiMC(nn.Module):
         prob_knn = F.softmax(logits_knn, dim=-1)
 
         NUM_BASE_CLS = num_base_cls
-        use_diversity = self.cfg.TRAINER.BiMC.USING_ENSEMBLE
+        use_diversity = self.cfg.TRAINER.TF_MCA.USING_ENSEMBLE
         if use_diversity:
             ensemble_alpha = self.cfg.DATASET.ENSEMBLE_ALPHA
         else:

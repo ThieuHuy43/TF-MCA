@@ -5,7 +5,7 @@ from datasets.data_manager import DatasetManager
 from torch.nn import functional as F
 from tqdm import tqdm
 from utils.evaluator import AccuracyEvaluator
-from models.bimc import BiMC
+from models.tf_mca import TF_MCA
 import numpy as np
 import time
 
@@ -17,7 +17,7 @@ class Runner:
         self.data_manager = DatasetManager(cfg,) 
         self.device = cfg.DEVICE.DEVICE_NAME
 
-        self.model = BiMC(cfg, self.data_manager.template, self.device)
+        self.model = TF_MCA(cfg, self.data_manager.template, self.device)
 
         # device
         device_count = torch.cuda.device_count()
@@ -88,7 +88,7 @@ class Runner:
 
             current_state_dict = self.model.build_task_statistics(current_class_name, loader,
                                                              class_index=self.data_manager.class_index_in_task[i], 
-                                                             calibrate_novel_vision_proto=self.cfg.TRAINER.BiMC.VISION_CALIBRATION,)
+                                                             calibrate_novel_vision_proto=self.cfg.TRAINER.TF_MCA  .VISION_CALIBRATION,)
 
             state_dict_list.append(current_state_dict)            
             merged_state_dict = self.merge_dicts(state_dict_list)

@@ -19,7 +19,7 @@ MODEL:
   
 
 TRAINER:
-  BiMC:
+  TF_MCA:
     PREC: "fp16"  # fp16, fp32, amp
 
     VISION_CALIBRATION: True

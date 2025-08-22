@@ -212,10 +212,10 @@ class TaskDataset(Dataset):
         self.class_to_task_id = class_to_task_id
         self.class_name = class_name
         
-        # ✅ Detect if images are paths or tensors
+        # Detect if images are paths or tensors
         if len(images) > 0:
             sample = images[0]
-            self.use_path = isinstance(sample, str)  # ✅ Check if it's file path
+            self.use_path = isinstance(sample, str)  # Check if it's file path
             print(f"Dataset mode: {'Path-based' if self.use_path else 'Tensor-based'}")
         else:
             self.use_path = False
@@ -225,16 +225,16 @@ class TaskDataset(Dataset):
 
     def __getitem__(self, idx):
         if self.use_path:
-            # ✅ Load image from path on-demand
+            # Load image from path on-demand
             try:
                 image = self.transform(pil_loader(self.images[idx]))
             except Exception as e:
                 print(f"Error loading {self.images[idx]}: {e}")
-                # ✅ Fallback: create dummy black image
+                # Fallback: create dummy black image
                 dummy_img = Image.new('RGB', (224, 224), (0, 0, 0))
                 image = self.transform(dummy_img)
         else:
-            # ✅ Handle pre-loaded tensors (legacy)
+            # Handle pre-loaded tensors (legacy)
             img = self.images[idx]
             
             if img.ndim == 3 and img.shape[0] == 3:
@@ -246,7 +246,7 @@ class TaskDataset(Dataset):
 
         label = self.labels[idx]
         
-        # ✅ Determine task_id and class_name
+        # Determine task_id and class_name
         if self.class_to_task_id is not None:
             task_id = self.class_to_task_id[label]
         else:
@@ -257,7 +257,7 @@ class TaskDataset(Dataset):
         else:
             cls_name = ''
         
-        # ✅ Return dict format like original code expects
+        # Return dict format like original code expects
         ret = {
             'idx': idx, 
             'image': image,
@@ -266,54 +266,6 @@ class TaskDataset(Dataset):
             'task_id': task_id
         }
         return ret
-# class TaskDataset(Dataset):
-#     def __init__(self, images, labels, transform, class_to_task_id=None, class_name=None):
-#         assert len(images) == len(labels), "Data size error!"
-#         self.images = images
-#         self.labels = labels
-#         self.transform = transform
-#         self.use_path = isinstance(images[0], str)
-#         self.class_to_task_id = class_to_task_id
-#         self.class_name = class_name
-
-#     def __len__(self):
-#         return len(self.images)
-
-#     def __getitem__(self, idx):
-#         if self.use_path:
-#             image = self.transform(pil_loader(self.images[idx]))
-#         else: 
-#             # image = self.transform(Image.fromarray(self.images[idx]))
-#             img = self.images[idx]
-
-#             # Nếu ảnh ở dạng (C, H, W), chuyển về (H, W, C)
-#             if img.ndim == 3 and img.shape[0] == 3:
-#                 img = np.transpose(img, (1, 2, 0))  # (224, 224, 3)
-
-#             img = img.astype(np.uint8)
-#             img = Image.fromarray(img).convert("RGB").resize((224, 224))
-#             image = self.transform(img)
-
-#         label = self.labels[idx]
-          
-#         if self.class_to_task_id is not None:
-#             task_id = self.class_to_task_id[label]
-#         else:
-#             task_id = -1
-        
-#         if self.class_name is not None:
-#             cls_name = self.class_name[label]
-#         else:
-#             cls_name = ''
-            
-#         ret = {
-#             'idx': idx, 
-#             'image': image,
-#             'label': label,
-#             'cls_name': cls_name,
-#             'task_id' : task_id
-#         }
-#         return ret
 
 def pil_loader(path):
     """
